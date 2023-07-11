@@ -11,6 +11,6 @@ function runDockerContainer(imageName) {
 }
 
 // Get the image name from an input or pass it as an argument
-const imageName = process.argv[2] || 'mydockerrepo/myimage:latest';
+const imageName = process.argv[2] || 'mydockerrepo/nginx :latest';
 
 runDockerContainer(imageName);
