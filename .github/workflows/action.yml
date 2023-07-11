@@ -1,5 +1,5 @@
 name: Get Digest
-description: Custom GitHub Action to retrieve the digest of the amd64 architecture from a Docker image manifest.
+# description: Custom GitHub Action to retrieve the digest of the amd64 architecture from a Docker image manifest.
 
 on:
   pull_request:
