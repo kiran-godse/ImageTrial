@@ -1,8 +1,11 @@
 name: Get Digest
 on:
-  pull_request:
-    types:
-      - closed
+  workflow_dispatch:
+    inputs:
+      force_rebuild:
+        description:  'Force Rebuild'
+        required:     false
+        default:      false
 
 jobs:
   build:
