@@ -6,30 +6,21 @@ on:
     types:
       - closed
 
-inputs:
-  image:
-    description: 'The name of the Docker image.'
-    required: true
-    default: 'nginx:latest'
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-outputs:
-  digest:
-    description: 'The digest of the amd64 architecture in the Docker image manifest.'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-runs:
-  using: 'node12'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
 
-  - name: Set up Node.js
-    uses: actions/setup-node@v2
-    with:
-      node-version: '12'
-
-  - name: Install dependencies
-    run: npm install
-
-  - name: Run action
-    run: node index.js
+      - name: Run action
+        run: node index.js
