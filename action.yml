@@ -1,17 +1,21 @@
-name: Get Digest
+name: Get Substrate Version Workflow
+on:
+  push:
+    branches:
+      - main
 
-description: Custom GitHub Action to retrieve the digest of the amd64 architecture from a Docker image manifest.
-
-inputs:
-  image:
-    description: 'The name of the Docker image.'
-    required: true
-    default: 'nginx:latest'
-
-outputs:
-  digest:
-    description: 'The digest of the amd64 architecture in the Docker image manifest.'
-
-runs:
-  using: 'node12'
-  main: 'index.js'
+jobs:
+  get_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Get Substrate Version
+        uses: your-repo/get-substrate-version-action@v1
+        id: substrate_version
+        with:
+          image_name: rainfall-one/crucible:latest
+      
+      - name: Print Substrate Version
+        run: echo "The version of Substrate is ${{ steps.substrate_version.outputs.version }}"
